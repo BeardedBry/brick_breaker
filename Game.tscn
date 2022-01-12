@@ -1,3 +1,128 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/paddle/Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/brick/Brick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ball/PhysicsBall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Wall/Wall.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 200 )
 
 [node name="Game" type="Node2D"]
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Graphics"]
+margin_right = 600.0
+margin_bottom = 400.0
+color = Color( 0.027451, 0.027451, 0.027451, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BrickContainer" type="Node2D" parent="."]
+
+[node name="Brick" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 80, 184 )
+
+[node name="Brick2" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 208, 184 )
+
+[node name="Brick3" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 176, 184 )
+
+[node name="Brick4" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 144, 184 )
+
+[node name="Brick5" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 112, 184 )
+
+[node name="Brick6" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 304, 104 )
+
+[node name="Brick7" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 400, 120 )
+
+[node name="Brick8" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 432, 120 )
+
+[node name="Brick9" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 136 )
+
+[node name="Brick10" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 152 )
+
+[node name="Brick11" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 168 )
+
+[node name="Brick12" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 184 )
+
+[node name="Brick13" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 200 )
+
+[node name="Brick14" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 216 )
+
+[node name="Brick15" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 232 )
+
+[node name="Brick16" parent="BrickContainer" instance=ExtResource( 2 )]
+position = Vector2( 528, 248 )
+
+[node name="BallContainer" type="Node2D" parent="."]
+
+[node name="BallSpawn" type="Position2D" parent="BallContainer"]
+position = Vector2( 300, 208 )
+
+[node name="PhysicsBall" parent="BallContainer" instance=ExtResource( 3 )]
+position = Vector2( 296, 216 )
+
+[node name="WallContainer" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopWall" parent="WallContainer" instance=ExtResource( 4 )]
+position = Vector2( 328, 0 )
+rotation = 1.5708
+wall_type = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallContainer/TopWall"]
+position = Vector2( -8, 28 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" parent="WallContainer" instance=ExtResource( 4 )]
+position = Vector2( 0, 176 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallContainer/LeftWall"]
+position = Vector2( -8, 24 )
+shape = SubResource( 2 )
+
+[node name="RightWall" parent="WallContainer" instance=ExtResource( 4 )]
+position = Vector2( 616, 176 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallContainer/RightWall"]
+position = Vector2( -8, 24 )
+shape = SubResource( 2 )
+
+[node name="BottomWall" parent="WallContainer" instance=ExtResource( 4 )]
+position = Vector2( 328, 416 )
+rotation = 1.5708
+wall_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallContainer/BottomWall"]
+position = Vector2( -8, 28 )
+shape = SubResource( 1 )
+
+[node name="Paddle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 304, 358 )
+
+[editable path="WallContainer/TopWall"]
+[editable path="WallContainer/LeftWall"]
+[editable path="WallContainer/RightWall"]
+[editable path="WallContainer/BottomWall"]
